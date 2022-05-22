@@ -1,7 +1,9 @@
 const express = require('express');
 const { chats } = require('./data/data');
-const app = express()
+const dotenv = require('dotenv');
 
+const app = express()
+dotenv.config();
 
 
 app.get('/', (req, res) => {
@@ -16,4 +18,5 @@ app.get("/api/chat", (req, res) => {
     res.send(chats);
 });
 
-app.listen(5000, console.log("server started on port 5000"));
+const PORT = process.env.PORT || 5000;
+app.listen(5000, console.log(`server started on port ${PORT}`));
